@@ -160,7 +160,11 @@ We can see that in urban area, there is the multipath that impacts the triangle 
 
 ### Settings:
 
-In this open-source code ,the ephemeris is decoded as follows in *postNavigation.m*.
+The basic format of navigation data can be expressed by the following figure.  
+
+![image](https://github.com/user-attachments/assets/af9d3221-e105-4bca-ba54-918fd8e06eb2)
+
+In this open-source code, the ephemeris is decoded in *postNavigation.m*, and the detailed code is as follows.
 
 <img width="416" alt="image" src="https://github.com/user-attachments/assets/7d901a73-05dd-465c-bd42-488aff0dc378" />
 
@@ -229,6 +233,10 @@ The EKF means to fusing the state prediction and the measurement.
 More precisely, the measurement will be utilized to adjust the prediction, and the gain is related to their error covariances with resepct to the real state.
 
 <img width="415" alt="image" src="https://github.com/user-attachments/assets/bc4f15e4-3302-4a03-9413-1e583a9deace" />
+
+In the code, we write the EKF as follows:
+
+![image](https://github.com/user-attachments/assets/627f8b30-8fd7-42f0-bd07-981d69c16396)
 
 ### Results for Opensky:
 
