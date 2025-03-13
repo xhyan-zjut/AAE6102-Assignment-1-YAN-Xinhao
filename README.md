@@ -15,7 +15,12 @@ The results are given as follows.
 The purpose of acquisition is to identify all satellites visible to the user, as well as the coarse values of carrier Doppler frequency and code phase of satellite signals.
 The provided source file Opensky.bin is read by the following form in *initSettings.m*:
 
-<img width="816" alt="image" src="https://github.com/user-attachments/assets/2157a1bf-c167-4da2-8f05-2bd893261d4d" />
+
+while that for Urban.bin is
+
+![image](https://github.com/user-attachments/assets/e08d243b-1d4c-44fa-b770-ed429771ee32)
+
+
 
 Then, we need to set the values of the intermediate frequency (IF) and the sampling frequency. 
 Note that the original signal is GPS L1 signal, the IF is 4.58 MHz, and the sampling frequency is 58 MHz.
@@ -195,9 +200,13 @@ On the other hand, the binary bits of the navigation message for Urban data is p
 
 ### Settings:
 
-The weighted least square (WLS) estimate is in *lest.m*.
+The weighted least square (WLS) estimate is in *leastSquarePos.m*.
 
+![image](https://github.com/user-attachments/assets/52af4923-0af5-46d7-a34a-6e74304fe667)
 
+Meanwhile, the velocity can be estimated by using the following code in *leastSquarePos.m*.
+
+![image](https://github.com/user-attachments/assets/05ce6416-48c1-4874-aea8-a8d5a0c7efea)
 
 ### Results for Opensky:
 
@@ -208,17 +217,17 @@ From this figure, we can find that the solved location of the GPS signals can tr
 
 <img width="415" alt="image" src="https://github.com/user-attachments/assets/f65554f1-76aa-4db0-aa21-3a573c308ef5" />
 
-The variation is as
+The variation is plotted in the following figure:
 
 <img width="415" alt="image" src="https://github.com/user-attachments/assets/a6aaa598-45c5-4d30-a8ec-420fee05e4c9" />
 
 ### Results for Urban:
 
-Then, the result for Urban is
+Then, the positioning result for Urban is shown as follows, where the ground truth of Urban data is (22.3198722, 114.209101777778).
 
 <img width="415" alt="image" src="https://github.com/user-attachments/assets/72f6cc16-fcb8-45bf-8455-a4c63f6aedef" />
 
-The variation is as
+Also, the variation is drawn below.
 
 <img width="415" alt="image" src="https://github.com/user-attachments/assets/04d28b65-824e-43f3-a829-7361fe6a8fa6" />
 
@@ -234,7 +243,7 @@ More precisely, the measurement will be utilized to adjust the prediction, and t
 
 <img width="415" alt="image" src="https://github.com/user-attachments/assets/bc4f15e4-3302-4a03-9413-1e583a9deace" />
 
-In the code, we write the EKF as follows:
+In the code, we write the EKF in *ekf.m* as follows:
 
 ![image](https://github.com/user-attachments/assets/627f8b30-8fd7-42f0-bd07-981d69c16396)
 
