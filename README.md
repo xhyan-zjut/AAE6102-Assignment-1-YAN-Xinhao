@@ -124,12 +124,12 @@ Then, the result of correlation is displayed in the following figure.
 It can be intuitively seen that the prompt correlation significantly exceeds early and late correlations. 
 This indicates that the code phases is highly aligned and the tracking of the DLL is good.
 
-<img width="415" alt="image" src="https://github.com/user-attachments/assets/37eae784-bc0b-41dd-9543-2963178c8e44" />
+<img width="416" alt="image" src="https://github.com/user-attachments/assets/37eae784-bc0b-41dd-9543-2963178c8e44" />
 
 The ACF is presented below.
 It exhibits a symmetric shape, suggesting that the satellite is free from distortion and not affected by multipath effects, aligning with the experimental setup of an open sky environment.
 
-<img width="415" alt="image" src="https://github.com/user-attachments/assets/a69d989d-da0e-4128-bdfb-b18749d29192" />
+<img width="416" alt="image" src="https://github.com/user-attachments/assets/a69d989d-da0e-4128-bdfb-b18749d29192" />
 
 ### Results for Urban:
 
@@ -142,17 +142,17 @@ Then, the PLL and DLL discriminators are shown as follows:
 
 <img width="416" alt="image" src="https://github.com/user-attachments/assets/941a28aa-e11e-41fc-8517-dc74345cd358" /><br>
 
-<img width="415" alt="image" src="https://github.com/user-attachments/assets/d9b23227-6c3f-448b-81a0-50750cc3eb05" />
+<img width="416" alt="image" src="https://github.com/user-attachments/assets/d9b23227-6c3f-448b-81a0-50750cc3eb05" />
 
 Moreover, the early, prompt, and late correlations are plotted below.
 Under the effect of multipath, there seems to be no evident difference between prompt and early or late.
 
-<img width="414" alt="image" src="https://github.com/user-attachments/assets/4a4ec014-6822-4268-927c-a232a5acc64c" />
+<img width="416" alt="image" src="https://github.com/user-attachments/assets/4a4ec014-6822-4268-927c-a232a5acc64c" />
 
 Finally, we draw the ACF.
 We can see that in urban area, there is the multipath that impacts the triangle shap.
 
-<img width="415" alt="image" src="https://github.com/user-attachments/assets/3de9af05-6ca2-48ed-a26e-a44a37118e93" />
+<img width="416" alt="image" src="https://github.com/user-attachments/assets/3de9af05-6ca2-48ed-a26e-a44a37118e93" />
 
 
 
@@ -183,13 +183,15 @@ The, the data of ephemeris is displayed as follows, which include 31 parameters:
 
 On the other hand, the binary bits of the navigation message for Urban data is plotted in the following figure. 
 
-<img width="415" alt="image" src="https://github.com/user-attachments/assets/8465dc8e-f457-41a9-99dd-17d014276513" />
+<img width="416" alt="image" src="https://github.com/user-attachments/assets/8465dc8e-f457-41a9-99dd-17d014276513" />
 
 
 
 ## Task 4 – Position and Velocity Estimation
 
 ### Settings:
+
+The weighted least square (WLS) estimate is in *lest.m*.
 
 
 
