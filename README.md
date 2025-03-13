@@ -1,5 +1,4 @@
-# AAE6102 Assignment 1 
-# YAN Xinhao 23125502R
+# AAE6102 Assignment 1 YAN Xinhao 23125502R
 
 In this assignment, we utilize an open-source Matlab code called GNSS-SDR for the purpose of conducting simulations.
 It includes two file folders, namely Common and include, a setting file initSetting.m, and the main function init.m.
@@ -15,36 +14,39 @@ The results are given as follows.
 The purpose of acquisition is to identify all satellites visible to the user, as well as the coarse values of carrier Doppler frequency and code phase of satellite signals.
 The provided source file Opensky.bin is read by the following form in *initSettings.m*:
 
+![image](https://github.com/user-attachments/assets/644826b3-14d5-4c3a-aa7f-e86014a703b1)
 
 while that for Urban.bin is
 
 ![image](https://github.com/user-attachments/assets/e08d243b-1d4c-44fa-b770-ed429771ee32)
 
-
-
 Then, we need to set the values of the intermediate frequency (IF) and the sampling frequency. 
 Note that the original signal is GPS L1 signal, the IF is 4.58 MHz, and the sampling frequency is 58 MHz.
 Hence, we set the above parameters in *initSettings.m* as follows:
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/d2f047f4-e5bb-42cb-890e-7b9156050112" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/d2f047f4-e5bb-42cb-890e-7b9156050112" />
+
+while that for Urban dataset is
+
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/c1739151-e33d-472a-8ff9-7c753c9e09c7" />
 
 Due to the Doppler shift, we need to search the frequencies in a certain range. 
 Here, we set the search stepsize as 500Hz, which is depicted by the following code in *acquisition.m*:
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/f294dd52-fd31-4cca-a318-86fe496e3222" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/f294dd52-fd31-4cca-a318-86fe496e3222" />
 
 Notice that each satellite has its own pseudo-random noise (PRN) code, and the code phase will change due to the transmission. 
 Therefore, the parallel frequency space search acquisition with 20 ms stepsize is considered, and the code can be found in *acquisition.m*:
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/b0b3bd26-16ec-4c8d-959a-91d9eef8931d" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/b0b3bd26-16ec-4c8d-959a-91d9eef8931d" />
 
 In fact, we only search maximum of 32 PRN codes as defined in *initSettings.m*:
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/50414983-1aa5-4e6f-a694-e05c6b624a38" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/50414983-1aa5-4e6f-a694-e05c6b624a38" />
 
 Before acquisition, the threshold should determined to judge the acquisition metrics, and this parameter is set in *initSettings.m*:
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/6e207fbd-82cd-49ca-a2df-30a0c66d81af" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/6e207fbd-82cd-49ca-a2df-30a0c66d81af" />
 
 ### Results for Opensky:
 
@@ -91,7 +93,7 @@ The tracking process involves refining the initial, the coarse estimate of Doppl
 First, we must determine the correlation, encompassing its early, prompt, and late components.
 Tthe corresponding code is written in the *tracking.m*.
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/7561e87c-dda1-4e7f-b3e3-9400d0a603ca" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/7561e87c-dda1-4e7f-b3e3-9400d0a603ca" />
 
 Then, the delay lock loop (DLL) discriminator will be used to adjust the code phase as shown in *tracking.m*:
 
@@ -118,23 +120,23 @@ It indicates that the carrier phase has been accurately aligned.
 The following figure plots the PLL discriminator results, where we can see that PLL output is around 0. 
 It means the local carrier and the received signal carrier are synchronized.
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/acaa1c7c-d785-482f-8686-ad4aa0954af8" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/acaa1c7c-d785-482f-8686-ad4aa0954af8" />
 
 When the DLL output is close to 0 as shown in the following figure, the local code is synchronized with the code phase of the received signal. 
 In this case, the code tracking error is minimized.
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/8ca3471d-862f-4580-bccf-75bd632413f8" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/8ca3471d-862f-4580-bccf-75bd632413f8" />
 
 Then, the result of correlation is displayed in the following figure. 
 It can be intuitively seen that the prompt correlation significantly exceeds early and late correlations. 
 This indicates that the code phases is highly aligned and the tracking of the DLL is good.
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/37eae784-bc0b-41dd-9543-2963178c8e44" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/37eae784-bc0b-41dd-9543-2963178c8e44" />
 
 The ACF is presented below.
 It exhibits a symmetric shape, suggesting that the satellite is free from distortion and not affected by multipath effects, aligning with the experimental setup of an open sky environment.
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/a69d989d-da0e-4128-bdfb-b18749d29192" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/a69d989d-da0e-4128-bdfb-b18749d29192" />
 
 ### Results for Urban:
 
@@ -145,19 +147,19 @@ First, the relation between the I-channel and Q-channel signals are shown in the
 
 Then, the PLL and DLL discriminators are shown as follows:
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/941a28aa-e11e-41fc-8517-dc74345cd358" /><br>
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/941a28aa-e11e-41fc-8517-dc74345cd358" /><br>
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/d9b23227-6c3f-448b-81a0-50750cc3eb05" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/d9b23227-6c3f-448b-81a0-50750cc3eb05" />
 
 Moreover, the early, prompt, and late correlations are plotted below.
 Under the effect of multipath, there seems to be no evident difference between prompt and early or late.
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/4a4ec014-6822-4268-927c-a232a5acc64c" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/4a4ec014-6822-4268-927c-a232a5acc64c" />
 
 Finally, we draw the ACF.
 We can see that in urban area, there is the multipath that impacts the triangle shap.
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/3de9af05-6ca2-48ed-a26e-a44a37118e93" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/3de9af05-6ca2-48ed-a26e-a44a37118e93" />
 
 
 
@@ -167,32 +169,32 @@ We can see that in urban area, there is the multipath that impacts the triangle 
 
 The basic format of navigation data can be expressed by the following figure.  
 
-![image](https://github.com/user-attachments/assets/af9d3221-e105-4bca-ba54-918fd8e06eb2)
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/4ee88626-76f3-4020-aea0-56d278b73f54" />
 
 In this open-source code, the ephemeris is decoded in *postNavigation.m*, and the detailed code is as follows.
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/7d901a73-05dd-465c-bd42-488aff0dc378" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/7d901a73-05dd-465c-bd42-488aff0dc378" />
 
 ### Results for Opensky:
 
 First, we plot the received bits of the navigation message in the following figure。
 Notice that the navigation data is binary information, which is consistent with the modulation.
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/ac8d937f-c57b-4014-90be-beed50367032" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/ac8d937f-c57b-4014-90be-beed50367032" />
 
 The, the data of ephemeris is displayed as follows, which include 31 parameters:
 
-<img width="366" alt="image" src="https://github.com/user-attachments/assets/6c89dbae-c7d8-4cca-8b1e-500c2c8ccea7" /><br>
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/6c89dbae-c7d8-4cca-8b1e-500c2c8ccea7" /><br>
 
-<img width="366" alt="image" src="https://github.com/user-attachments/assets/85d91c69-6878-4bed-a785-ac42b9a897b0" /><br>
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/85d91c69-6878-4bed-a785-ac42b9a897b0" /><br>
 
-<img width="366" alt="image" src="https://github.com/user-attachments/assets/110e1969-d514-49d1-85f3-81cff21acc26" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/110e1969-d514-49d1-85f3-81cff21acc26" />
 
 ### Results for Urban:
 
 On the other hand, the binary bits of the navigation message for Urban data is plotted in the following figure. 
 
-<img width="416" alt="image" src="https://github.com/user-attachments/assets/8465dc8e-f457-41a9-99dd-17d014276513" />
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/8465dc8e-f457-41a9-99dd-17d014276513" />
 
 
 
@@ -202,11 +204,11 @@ On the other hand, the binary bits of the navigation message for Urban data is p
 
 The weighted least square (WLS) estimate is in *leastSquarePos.m*.
 
-![image](https://github.com/user-attachments/assets/52af4923-0af5-46d7-a34a-6e74304fe667)
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/b60e4926-3fff-43f4-8fd1-0c62df631199" />
 
 Meanwhile, the velocity can be estimated by using the following code in *leastSquarePos.m*.
 
-![image](https://github.com/user-attachments/assets/05ce6416-48c1-4874-aea8-a8d5a0c7efea)
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/ee810d2b-e1a2-462c-8b09-2fca49991ac9" />
 
 ### Results for Opensky:
 
@@ -245,7 +247,7 @@ More precisely, the measurement will be utilized to adjust the prediction, and t
 
 In the code, we write the EKF in *ekf.m* as follows:
 
-![image](https://github.com/user-attachments/assets/627f8b30-8fd7-42f0-bd07-981d69c16396)
+<img width="415" alt="image" src="https://github.com/user-attachments/assets/2ec3efd8-d069-45c1-9bb5-45b7be9a4333" />
 
 ### Results for Opensky:
 
